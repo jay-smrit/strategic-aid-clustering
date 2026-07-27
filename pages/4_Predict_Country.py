@@ -11,7 +11,7 @@ import streamlit as st
 
 from src.predict import CountryPredictor
 from src.schemas import SCHEMA
-from src.constants import CLUSTER_MESSAGES
+from src.constants import CLUSTER_MESSAGES, CLUSTER_LABELS
 from src.visualization import Visualizer
 
 # PAGE CONFIGURATION
@@ -122,7 +122,7 @@ if uploaded_file is not None:
 
         else:
             if st.button("🚀 Predict All Countries", use_container_width=True):
-                results = predictor.predict(batch_df)
+                results = predictor.predict_batch(batch_df)
                 st.success("Batch prediction completed successfully.")
                 st.subheader("Prediction Results")
                 st.dataframe(results, use_container_width=True, hide_index=True)
@@ -154,8 +154,8 @@ if uploaded_file is not None:
                 for cluster in sorted(cluster_counts.index):
                     recommendation_rows.append({
                         "Cluster": cluster,
-                        "Priority": CLUSTER_MESSAGES[cluster]["priority"],
-                        "Recommendation": CLUSTER_MESSAGES[cluster]["recommendation"],
+                        "Priority": CLUSTER_LABELS[cluster],
+                        "Recommendation": CLUSTER_MESSAGES[cluster],
                         "Countries": int(cluster_counts[cluster])
                     })
                 recommendation_df = pd.DataFrame(recommendation_rows)
