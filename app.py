@@ -55,12 +55,13 @@ with st.sidebar:
     st.markdown(
         """
        Select a page from the sidebar.
+
         **Available Pages**
-        • Home
-        • Data Explorer
-        • Visualizations
-        • Predict Country
-        • About
+        - Home
+        - Data Explorer
+        - Visualizations
+        - Predict Country
+        - About
         """
     )
 
@@ -69,9 +70,10 @@ with st.sidebar:
     st.info(
         """
         **Model**
-        KMeans Clustering
-        K = 3
-        PCA Components = 6
+
+        - KMeans Clustering
+        - K = 3
+        - PCA Components = 6
         """
     )
 

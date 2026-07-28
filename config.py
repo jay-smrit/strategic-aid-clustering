@@ -18,7 +18,7 @@ PROCESSED_DATA_PATH = DATA_DIR / "processed_data.csv"
 PIPELINE_PATH = MODEL_DIR / "cluster_pipeline.pkl"
 
 # APPLICATION
-APP_TITLE = "🌍 Country Clustering for Strategic Aid Allocation"
+APP_TITLE = "Country Clustering for Strategic Aid Allocation"
 APP_ICON = "🌍"
 LAYOUT = "wide"
 SIDEBAR_TITLE = "Navigation"
