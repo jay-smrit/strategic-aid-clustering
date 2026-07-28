@@ -33,17 +33,17 @@ class Visualizer:
         return Visualizer.update_layout(fig, "Country Distribution Across Clusters")
 
     # MISSING VALUES
-    @staticmethod
-    def plot_missing_values(df):
-        missing = df.isnull().sum().reset_index()
-        missing.columns = ["Feature","Missing"]
+    # @staticmethod
+    # def plot_missing_values(df):
+    #     missing = df.isnull().sum().reset_index()
+    #     missing.columns = ["Feature","Missing"]
 
-        fig = px.bar(missing, x="Feature", y="Missing", text="Missing")
+    #     fig = px.bar(missing, x="Feature", y="Missing", text="Missing")
 
-        fig.update_traces(marker_color="#EF553B", textposition="outside")
-        fig.update_xaxes(tickangle=45)
+    #     fig.update_traces(marker_color="#EF553B", textposition="outside")
+    #     fig.update_xaxes(tickangle=45)
 
-        return Visualizer.update_layout(fig, "Missing Values")
+    #     return Visualizer.update_layout(fig, "Missing Values")
 
     # HISTOGRAM
     @staticmethod
@@ -79,7 +79,7 @@ class Visualizer:
         fig = px.scatter(df, x="PC1", y="PC2", color="Cluster", 
                          hover_data=hover_cols, color_discrete_map=CLUSTER_COLORS, opacity=0.85)
         fig.update_traces(marker=dict(size=9, line=dict(width=0.5, color="black")))
-        return Visualizer.update_layout(fig, "PCA Projection of COuntry Clusters")
+        return Visualizer.update_layout(fig, "PCA Projection of Country Clusters")
 
     # FEATURE SCATTER PLOT
     @staticmethod

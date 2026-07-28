@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 
-from config import PROCESSED_DATA_PATH
+from config import RAW_DATA_PATH, PROCESSED_DATA_PATH
 from src.constants import RADAR_FEATURES, MODEL_FEATURES
 from src.visualization import Visualizer
 
@@ -12,6 +12,7 @@ st.set_page_config(page_title="Visualizations", page_icon="📈", layout="wide")
 @st.cache_data
 def load_data():
     return pd.read_csv(PROCESSED_DATA_PATH)
+    # return pd.read_csv(RAW_DATA_PATH)
 df = load_data()
 
 # TITLE
@@ -49,7 +50,7 @@ st.divider()
 
 # CORRELATION ANALYSIS
 st.header("📌 Correlation Analysis")
-fig = Visualizer.plot_correlation_heatmap(df)
+fig = Visualizer.plot_correlation_heatmap(df[MODEL_FEATURES])
 st.plotly_chart(fig, use_container_width=True)
 st.divider()
 
@@ -65,11 +66,11 @@ st.plotly_chart(fig, use_container_width=True)
 st.divider()
 
 # CLUSTER COMPARISON
-st.header("🎯 Cluster Comparison")
-col1, col2 = st.columns(2)
-with col1:
-    fig = Visualizer.plot_cluster_comparison(df, MODEL_FEATURES)
-    st.plotly_chart(fig, use_container_width=True)
-with col2:
-    fig = Visualizer.plot_cluster_radar(df, RADAR_FEATURES)
-    st.plotly_chart(fig, use_container_width=True)
+# st.header("🎯 Cluster Comparison")
+# col1, col2 = st.columns(2)
+# with col1:
+#     fig = Visualizer.plot_cluster_comparison(df, MODEL_FEATURES)
+#     st.plotly_chart(fig, use_container_width=True)
+# with col2:
+#     fig = Visualizer.plot_cluster_radar(df, RADAR_FEATURES)
+#     st.plotly_chart(fig, use_container_width=True)

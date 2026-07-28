@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 
-from config import PROCESSED_DATA_PATH
+from config import RAW_DATA_PATH, PROCESSED_DATA_PATH
 from src.visualization import Visualizer
 
 # PAGE CONFIGURATION
@@ -10,7 +10,8 @@ st.set_page_config(page_title="Data Explorer", page_icon="📂", layout="wide")
 # LOAD DATA
 @st.cache_data
 def load_data():
-    return pd.read_csv(PROCESSED_DATA_PATH)
+    # return pd.read_csv(PROCESSED_DATA_PATH)
+    return pd.read_csv(RAW_DATA_PATH)
 df = load_data()
 
 # TITLE
@@ -61,18 +62,18 @@ st.dataframe(summary, use_container_width=True)
 st.divider()
 
 
-# MISSING VALUES
-st.header("❗ Missing Values")
-fig = Visualizer.plot_missing_values(df)
-st.plotly_chart(fig, use_container_width=True)
-st.divider()
+# # MISSING VALUES
+# st.header("❗ Missing Values")
+# fig = Visualizer.plot_missing_values(df)
+# st.plotly_chart(fig, use_container_width=True)
+# st.divider()
 
 # DOWNLOAD DATASET
-st.header("⬇️ Download Processed Dataset")
-csv = df.to_csv(index=False)
-st.download_button(
-    label="Download Processed Dataset", 
-    data=csv,
-    file_name="processed_country_data.csv",
-    mime="text/csv"
-)
+# st.header("⬇️ Download Processed Dataset")
+# csv = df.to_csv(index=False)
+# st.download_button(
+#     label="Download Processed Dataset", 
+#     data=csv,
+#     file_name="processed_country_data.csv",
+#     mime="text/csv"
+# )
