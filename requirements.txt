@@ -1,7 +1,9 @@
 streamlit
 Flask
+gunicorn
 pandas
 numpy
 scikit-learn
 matplotlib
 seaborn
+validclust
